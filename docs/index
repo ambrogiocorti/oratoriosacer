@@ -1,37 +1,16 @@
 <!DOCTYPE html>
-<html lang="it">
-    <head>
-        <title>Attività JS04 - Guida JavaScript</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background: #f8f9fa;
-                align-items: center;
-                display: flex;
-                margin: 0;
-            }
+<html>
+<head>
+    <title>JavaScript Example</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <button onclick="showMessage()">Click me</button>
 
-            div{
-                margin: auto;
-                width: 40%;
-                display: block;
-            }
-
-            h2{
-                color: #007bff;
-                font-size: 22px;
-                margin-bottom: 15px;
-                text-align: center;
-            }
-            
-            p{
-                margin-top: 15px;
-                font-size: 16px;
-                font-weight: bold;
-                color: #333;
-                text-align: center;
-            }
-
-            input {
-                margin-bottom: 10px;
-                border: 1px solid #
+    <script>
+        function showMessage() {
+            alert("Hello! This is a JavaScript alert.");
+        }
+    </script>
+</body>
+</html>
