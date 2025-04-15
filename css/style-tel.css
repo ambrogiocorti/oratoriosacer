@@ -1,3 +1,8 @@
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* ===== REGOLE GENERALI MOBILE FIRST ===== */
 @media (max-width: 1024px) {
   body {
@@ -8,27 +13,35 @@
 
 /* ===== NAVBAR ===== */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 0.5rem;
-    height: auto;
-    flex-wrap: wrap;
-  }
-  
-  .nav-list {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .nav-list li {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .nav-list a {
-    padding: 0.8rem;
-    font-size: 0.95rem;
-    justify-content: center;
-  }
+  /* Elimina tutte le regole @media per la navbar */
+/* Mantieni solo queste regole base: */
+.navbar {
+  background-color: #000;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin: 0 10px;
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
 }
 
 /* ===== TIMELINE ===== */
@@ -103,6 +116,7 @@
   }
 }
 
+/* ===== CAROSELLO ===== */
 @media (max-width: 768px) {
   #carosello {
     margin: 20px auto;
@@ -140,6 +154,7 @@
   }
 }
 
+/* ===== FOOTER ===== */
 @media (max-width: 768px) {
   .footer {
     text-align: center;
@@ -198,6 +213,7 @@
   }
 }
 
+/* ===== ELEMENTI COMUNI ===== */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
