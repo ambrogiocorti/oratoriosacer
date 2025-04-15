@@ -103,7 +103,6 @@
   }
 }
 
-/* ===== CAROSELLO ===== */
 @media (max-width: 768px) {
   #carosello {
     margin: 20px auto;
@@ -141,7 +140,6 @@
   }
 }
 
-/* ===== FOOTER ===== */
 @media (max-width: 768px) {
   .footer {
     text-align: center;
@@ -162,7 +160,44 @@
   }
 }
 
-/* ===== ELEMENTI COMUNI ===== */
+@media (max-width: 768px) {
+  #carosello {
+    padding: 0 10px;
+    margin: 15px auto;
+  }
+  
+  #immagini {
+    padding-bottom: 75%;
+    border-radius: 8px;
+  }
+  
+  #didascalia {
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  #prev, #next {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .slide-indicators {
+    bottom: 50px;
+  }
+  
+  .slide-indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #immagini {
+    padding-bottom: 60%;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
