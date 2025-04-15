@@ -1,0 +1,90 @@
+@media (max-width: 768px) {
+    .navbar {
+      padding: 0.5rem;
+    }
+    
+    .nav-list a {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .footer .col-md-4 {
+      margin-bottom: 1.5rem;
+    }
+
+    .event-date {
+      top: -10px;
+      left: 30px;
+      transform: none;
+      width: auto;
+      max-width: 200px;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+  }
+  
+  .event-icon {
+      top: 30px;
+      left: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .timeline-container {
+      padding: 0 1.5rem;
+  }
+  
+  .event-content {
+      width: calc(60% - 40px);
+      padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+      left: 30px;
+  }
+  
+  .timeline-header h1 {
+      font-size: 2rem;
+  }
+  
+  .event {
+      margin-bottom: 3.5rem;
+  }
+  
+  .event-content {
+      width: calc(100% - 80px);
+      margin-left: 70px !important;
+      border-left: 2px solid var(--accent) !important;
+      border-right: none !important;
+  }
+  
+  .event-date, .event-icon {
+      left: 30px;
+      transform: none;
+      text-align: left;
+  }
+  
+  .event-date {
+      width: auto;
+      padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-container {
+      padding: 0 1rem;
+  }
+  
+  .event-content {
+      padding: 1.2rem;
+  }
+  
+  .event-content h3 {
+      font-size: 1.2rem;
+  }
+  
+  .event-content p {
+      font-size: 0.9rem;
+  }
+}
