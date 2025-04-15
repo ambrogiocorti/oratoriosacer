@@ -142,7 +142,7 @@ body {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background-color: yellowgreen;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 5px 10px;
         font-size: 20px;
         cursor: pointer;
@@ -161,7 +161,7 @@ body {
     }
 
     #prev:hover, #next:hover {
-        background-color: green;
+        background-color: rgba(0, 0, 0, 0.5);
     }
   
   .slide-indicators {
