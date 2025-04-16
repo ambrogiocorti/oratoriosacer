@@ -51,7 +51,7 @@ body {
   .event-content {
     width: calc(60% - 40px);
     padding: 1.3rem;
-    margin-top: 15px;
+    margin-top: 60px; /* aumentato */
   }
 }
 
@@ -83,11 +83,11 @@ body {
   .event-content {
     width: 85% !important;
     margin-left: 0 !important;
-    padding: 2.5rem 1.1rem 1.1rem 1.1rem; /* QUI: più padding-top */
+    padding: 2.5rem 1.1rem 1.1rem 1.1rem;
     position: relative;
     left: auto;
     right: auto;
-    margin-top: 15px;
+    margin-top: 60px; /* aumentato */
   }
 
   .event-date {
@@ -101,7 +101,7 @@ body {
   .event-icon {
     left: 50%;
     transform: translateX(-50%);
-    top: 25px;
+    top: 40px; /* abbassato per armonia */
     width: 30px;
     height: 30px;
     font-size: 0.8rem;
@@ -116,14 +116,13 @@ body {
   .event-content {
     width: 90% !important;
     padding: 2.5rem 1.1rem 1.1rem 1.1rem !important;
-    margin-top: 15px;
+    margin-top: 60px; /* aumentato */
   }
 
   .event-content h3 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
     text-align: center;
-	padding: 2.5rem 1.1rem 1.1rem 1.1rem !important;
   }
 
   .event-content p {
