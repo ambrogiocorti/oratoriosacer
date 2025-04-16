@@ -50,7 +50,8 @@ body {
 
   .event-content {
     width: calc(60% - 40px);
-    padding: 1.2rem;
+    padding: 1.3rem;
+    margin-top: 15px;
   }
 }
 
@@ -86,6 +87,7 @@ body {
     position: relative;
     left: auto;
     right: auto;
+    margin-top: 15px;
   }
 
   .event-date {
@@ -114,6 +116,7 @@ body {
   .event-content {
     width: 90% !important;
     padding: 2.5rem 1.1rem 1.1rem 1.1rem !important;
+    margin-top: 15px;
   }
 
   .event-content h3 {
