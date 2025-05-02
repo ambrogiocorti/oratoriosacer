@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             date: "Novembre 2022",
-            title: "Notte dei Santi",
+            title: "Notte dei Santiciao",
             description: "La Notte dei Santi è una serata, organizzata dalla <b>FOM</b> - Fondazione Oratori Milanesi, in cui, i diversi oratori giocano facendo un tour in alcune chiese della città di Milano."
         },
         {
