@@ -21,6 +21,120 @@ body {
     line-height: 1.6;
 }
 
+/* CORREZIONI PER TIMELINE PERFETTAMENTE ALLINEATA */
+
+.year-container {
+    margin-bottom: 2.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.year-header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.year-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    letter-spacing: 0.5px;
+}
+
+/* CONTENITORE EVENTI */
+.events-container {
+    padding: 0 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.events-container.open {
+    max-height: 5000px;
+    padding: 1.5rem 2rem;
+}
+
+/* SINGOLO EVENTO */
+.event {
+    position: relative;
+    padding: 1.5rem 0 1.5rem 100px;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.event:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* DATA EVENTO */
+.event-date {
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    width: 80px;
+    padding: 0.4rem 0.8rem;
+    background: #3498db;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(52,152,219,0.3);
+}
+
+/* ICONA EVENTO */
+.event-icon {
+    position: absolute;
+    left: 90px;
+    top: 1.5rem;
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    color: #3498db;
+    font-size: 0.9rem;
+}
+
+/* CONTENUTO EVENTO */
+.event-content {
+    padding-left: 1rem;
+}
+
+.event-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.event-content p {
+    margin: 0;
+    color: #7f8c8d;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* FRECCIA TOGGLE */
+.toggle-icon {
+    transition: transform 0.3s ease;
+    color: #7f8c8d;
+}
+
 .timeline-container {
     max-width: 1200px;
     margin: 3rem auto;

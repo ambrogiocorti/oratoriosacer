@@ -44,7 +44,29 @@ body {
 
 /* ===== TIMELINE ===== */
 
-/* Responsive */
+@media (max-width: 768px) {
+  .year-header {
+      padding: 1.2rem;
+  }
+  
+  .events-container.open {
+      padding: 1rem 1.2rem;
+  }
+  
+  .event {
+      padding-left: 80px;
+  }
+  
+  .event-date {
+      width: 70px;
+      font-size: 0.75rem;
+  }
+  
+  .event-icon {
+      left: 70px;
+  }
+}
+
 @media (min-width: 992px) {
   .timeline::before {
       left: 50%;
