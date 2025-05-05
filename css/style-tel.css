@@ -43,6 +43,49 @@ body {
 }
 
 /* ===== TIMELINE ===== */
+
+@media (min-width: 768px) {
+  .timeline::before {
+      left: 50%;
+  }
+  
+  .event {
+      margin-left: 0;
+  }
+  
+  .event-content {
+      width: calc(50% - 60px);
+  }
+  
+  .event-date {
+      left: 50%;
+  }
+  
+  .event-icon {
+      left: 50%;
+  }
+  
+  .event:nth-child(odd) .event-content {
+      margin-left: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .year-header h2 {
+      font-size: 1.3rem;
+      padding: 0.3rem 1.5rem;
+  }
+  
+  .event-content {
+      padding: 1rem;
+  }
+  
+  .event-date {
+      width: 120px;
+      font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 992px) {
   .timeline-container {
     padding: 0 1.5rem;

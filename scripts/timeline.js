@@ -1,4 +1,5 @@
 console.log("Timeline JS caricato correttamente!");
+
 document.addEventListener('DOMContentLoaded', function() {
     const timelineEvents = [
         {
@@ -245,40 +246,73 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Celebrazioni della Passione, Morte e Risurrezione."
         }
     ];
-
-    const timeline = document.getElementById('timeline');
-
-    timelineEvents.forEach(event => {
-        const eventElement = document.createElement('div');
-        eventElement.className = 'event';
+    // Funzione per creare la timeline
+    const createTimeline = (events) => {
+        const timeline = document.getElementById('timeline');
         
-        eventElement.innerHTML = `
-            <div class="event-date">${event.date}</div>
-            <div class="event-icon">
-                <i class="fas ${event.icon}"></i>
-            </div>
-            <div class="event-content">
-                <h3>${event.title}</h3>
-                <p>${event.description}</p>
-            </div>
-        `;
-        
-        timeline.appendChild(eventElement);
-    });
+        // Raggruppa eventi per anno
+        const eventsByYear = events.reduce((acc, event) => {
+            const year = event.date.split(' ')[1];
+            if (!acc[year]) acc[year] = [];
+            acc[year].push(event);
+            return acc;
+        }, {});
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
+        // Crea sezioni per ogni anno
+        Object.entries(eventsByYear).forEach(([year, yearEvents]) => {
+            // Header anno
+            const yearHeader = document.createElement('div');
+            yearHeader.className = 'year-header';
+            yearHeader.innerHTML = `
+                <h2>${year}</h2>
+                <div class="year-line"></div>
+            `;
+            timeline.appendChild(yearHeader);
+
+            // Eventi dell'anno
+            yearEvents.forEach(event => {
+                const eventElement = document.createElement('div');
+                eventElement.className = 'event';
+                eventElement.innerHTML = `
+                    <div class="event-date">${event.date}</div>
+                    <div class="event-icon">
+                        <i class="fas ${getEventIcon(event.title)}"></i>
+                    </div>
+                    <div class="event-content">
+                        <h3>${event.title}</h3>
+                        <p>${event.description}</p>
+                    </div>
+                `;
+                timeline.appendChild(eventElement);
+            });
         });
-    });
 
-    document.querySelectorAll('.event').forEach(event => {
-        event.style.opacity = "0";
-        event.style.transform = "translateY(20px)";
-        event.style.transition = "all 0.4s ease-out";
-        observer.observe(event);
-    });
+        // Animazioni
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        });
+
+        document.querySelectorAll('.event, .year-header').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.4s ease-out";
+            observer.observe(el);
+        });
+    };
+
+    // Carica gli eventi (puoi sostituire con fetch o altro)
+    const loadEvents = () => {
+        // Qui puoi caricare gli eventi da un file JSON esterno
+        // Esempio: fetch('events.json').then(...)
+        // Per ora usiamo un array vuoto che verrà popolato
+        const events = []; 
+        createTimeline(events);
+    };
+
+    loadEvents();
 });
