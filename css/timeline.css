@@ -21,6 +21,8 @@ body {
     line-height: 1.6;
 }
 
+/* CORREZIONI PER TIMELINE PERFETTAMENTE ALLINEATA */
+
 .year-container {
     margin-bottom: 2.5rem;
     background: white;
@@ -28,77 +30,16 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    padding: 0;
-    /* Reset */
 }
 
-/* HEADER ANNO CON PIÙ SPAZIO */
 .year-header {
-    padding: 1.8rem 2.5rem;
-    /* Aumentato da 1.5rem 2rem */
+    padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
     border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-/* CONTENITORE EVENTI CON PIÙ SPAZIO */
-.events-container {
-    padding: 0 2.5rem;
-    /* Aumentato da 2rem */
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-}
-
-.events-container.open {
-    max-height: 5000px;
-    padding: 2rem 2.5rem;
-    /* Aumentato da 1.5rem 2rem */
-}
-
-/* EVENTO CON PIÙ SPAZIO LATERALE */
-.event {
-    position: relative;
-    padding: 1.8rem 0 1.8rem 120px;
-    /* Aumentato padding sinistro e verticale */
-    margin-bottom: 1.8rem;
-    border-bottom: 1px dashed #e0e0e0;
-}
-
-/* DATA PIÙ EVIDENTE */
-.event-date {
-    position: absolute;
-    left: 0;
-    top: 1.8rem;
-    /* Allineato con il nuovo padding */
-    width: 100px;
-    /* Aumentato da 80px */
-    padding: 0.5rem 1rem;
-    /* Aumentato il padding */
-    background: #3498db;
-    color: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    /* Leggermente più grande */
-    font-weight: 600;
-    text-align: center;
-    box-shadow: 0 3px 10px rgba(52,152,219,0.3);
-}
-
-/* ICONA RIALLINEATA */
-.event-icon {
-    position: absolute;
-    left: 110px;
-    /* Aggiustato per il nuovo padding */
-    top: 1.8rem;
-    /* Allineato con il nuovo padding */
-    width: 40px;
-    /* Leggermente più grande */
-    height: 40px;
-    /* Restanti proprietà invariate */
 }
 
 .year-header h2 {
@@ -175,7 +116,7 @@ body {
 }
 
 .event-content h3 {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
     color: #2c3e50;
     font-weight: 500;
@@ -365,76 +306,4 @@ body {
     margin-bottom: 0;
     color: var(--text-dark);
     line-height: 1.6;
-}
-
-/* Aggiungi queste regole in fondo al file */
-
-/* Stile per gli accordion */
-.year-accordion {
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    background: var(--card-light);
-    border: 1px solid var(--border-light);
-}
-
-.accordion-header {
-    padding: 1.5rem 2rem;
-    background: var(--primary);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.accordion-header:hover {
-    background: #3a434b;
-}
-
-.accordion-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-.accordion-icon {
-    transition: transform 0.3s ease;
-    font-size: 1.2rem;
-}
-
-.accordion-header.active .accordion-icon {
-    transform: rotate(180deg);
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
-}
-
-.accordion-content.active {
-    max-height: 5000px;
-    /* Valore sufficientemente grande */
-    padding: 1rem 0;
-}
-
-/* Animazioni */
-.event {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-}
-
-.event.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Effetto hover più marcato */
-.event-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
