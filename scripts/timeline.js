@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: "Ritiro Spirituale di Avvento",
             description: "Weekend di spiritualità in preparazione al Natale. Durante questi due giorni"
         }, {
-            date: "Novembre/Dicembre 2023",
+            date: "Dicembre 2023",
             title: "Carro di Babbo Natale",
             description: "Giri settimanali per le vie di Cernusco per animare il Natale."
         }, {
