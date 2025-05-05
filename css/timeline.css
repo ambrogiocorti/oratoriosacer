@@ -9,12 +9,15 @@
     --text-muted: #6c757d;
     --border-light: #e9ecef;
     --highlight: #e9ecef;
+    --timeline-line: #dee2e6;
+    --year-header-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --year-header-hover: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
 }
 
 body {
     background-color: var(--bg-light);
     color: var(--text-dark);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
@@ -41,88 +44,132 @@ body {
     font-size: 1.1rem;
 }
 
+/* Nuovo stile per i contenitori annuali */
+.year-container {
+    margin-bottom: 2rem;
+    background: var(--card-light);
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.year-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    background: var(--year-header-bg);
+    transition: all 0.3s ease;
+}
+
+.year-header:hover {
+    background: var(--year-header-hover);
+}
+
+.year-header h2 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+    color: var(--primary);
+}
+
+.toggle-icon i {
+    font-size: 1.2rem;
+}
+
+/* Contenuto espandibile */
+.events-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    padding: 0 2rem;
+}
+
+.events-container.open {
+    max-height: 5000px;
+    /* Valore sufficientemente grande */
+    padding: 1rem 2rem 2rem;
+}
+
+/* Timeline */
 .timeline {
     position: relative;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 50px;
     top: 0;
-    width: 1px;
+    width: 2px;
     height: 100%;
-    background: linear-gradient(to bottom, 
-        transparent 0%, 
-        var(--accent) 10%, 
-        var(--accent) 90%, 
-        transparent 100%);
+    background: linear-gradient(to bottom, transparent 0%, var(--accent) 10%, var(--accent) 90%, transparent 100%);
     transform: translateX(-50%);
 }
 
+/* Eventi */
 .event {
     position: relative;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
     transition: all 0.4s ease-out;
+    padding-left: 80px;
+}
+
+.event.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .event-content {
-    width: calc(50% - 60px);
-    padding: 2rem;
+    width: 100%;
+    padding: 1.5rem;
     background: var(--card-light);
-    border-radius: 6px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: relative;
     border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
 }
 
 .event-content:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-.event:nth-child(odd) .event-content {
-    margin-left: auto;
-    border-left: 2px solid var(--accent);
-}
-
-.event:nth-child(even) .event-content {
-    border-right: 2px solid var(--accent);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
 }
 
 .event-date {
     position: absolute;
-    width: 140px;
-    left: 50%;
-    top: -15px;
-    transform: translateX(-50%);
-    background: var(--card-light);
+    left: -70px;
+    top: 20px;
+    width: 120px;
+    background: var(--primary);
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    color: var(--primary);
+    color: white;
     z-index: 4;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     border: 1px solid var(--border-light);
-    box-shadow: 0 2px 10px #686868;
-    font-family: 'Segoe UI', sans-serif;
-    white-space: nowrap;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    background: var(--primary);
-    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-weight: 500;
 }
 
 .event-icon {
-    background: var(--primary);
-    color: white;
     position: absolute;
-    left: 50%;
+    left: 40px;
     top: 20px;
-    transform: translateX(-50%);
     width: 40px;
     height: 40px;
-    background: var(--bg-light);
+    background: var(--card-light);
     color: var(--primary);
     border-radius: 50%;
     display: flex;
@@ -132,4 +179,17 @@ body {
     z-index: 3;
     border: 1px solid var(--border-light);
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.event-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.event-content p {
+    margin-bottom: 0;
+    color: var(--text-dark);
+    line-height: 1.6;
 }

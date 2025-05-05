@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
         "triduo": "fa-cross"
     };
 
-    // Funzione per determinare l'icona in base al titolo
+    // Funzione per determinare l'icona
     const getEventIcon = (title) => {
         const lowerTitle = title.toLowerCase();
         for (const [key, icon] of Object.entries(iconMap)) {
-            if (lowerTitle.includes(key)) {
+            if (lowerTitle.includes(key)) 
                 return icon;
             }
-        }
         return iconMap.default;
     };
 
+    // I tuoi eventi...
     const timelineEvents = [
         {
             date: "Settembre 2021",
@@ -272,38 +272,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     ];
 
-    const timeline = document.getElementById('timeline');
-
-    // Raggruppa gli eventi per anno
+    // Raggruppa eventi per anno
     const eventsByYear = timelineEvents.reduce((acc, event) => {
         const year = event
             .date
-            .split(' ')[1]; // Estrae l'anno dalla data
-        if (!acc[year]) {
+            .split(' ')[1];
+        if (!acc[year]) 
             acc[year] = [];
-        }
         acc[year].push(event);
         return acc;
     }, {});
 
-    // Crea le sezioni per ogni anno
+    const timeline = document.getElementById('timeline');
+
+    // Crea sezioni per ogni anno
     Object
         .entries(eventsByYear)
         .forEach(([year, events]) => {
-            // Aggiungi un header per l'anno
+            const yearContainer = document.createElement('div');
+            yearContainer.className = 'year-container';
+
             const yearHeader = document.createElement('div');
             yearHeader.className = 'year-header';
             yearHeader.innerHTML = `
                 <h2>${year}</h2>
-                <div class="year-line"></div>
+                <div class="toggle-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             `;
-            timeline.appendChild(yearHeader);
 
-            // Aggiungi gli eventi per quell'anno
+            const eventsContainer = document.createElement('div');
+            eventsContainer.className = 'events-container';
+
+            // Aggiungi linea temporale
+            const timelineLine = document.createElement('div');
+            timelineLine.className = 'timeline-line';
+
+            // Aggiungi eventi
             events.forEach(event => {
                 const eventElement = document.createElement('div');
                 eventElement.className = 'event';
-
                 eventElement.innerHTML = `
                     <div class="event-date">${event.date}</div>
                     <div class="event-icon">
@@ -316,27 +324,43 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p>${event.description}</p>
                     </div>
                 `;
-
-                timeline.appendChild(eventElement);
+                eventsContainer.appendChild(eventElement);
             });
+
+            // Toggle al click sull'header
+            yearHeader.addEventListener('click', () => {
+                eventsContainer
+                    .classList
+                    .toggle('open');
+                const icon = yearHeader.querySelector('.toggle-icon i');
+                icon
+                    .classList
+                    .toggle('fa-chevron-down');
+                icon
+                    .classList
+                    .toggle('fa-chevron-up');
+
+                // Animazione eventi
+                if (eventsContainer.classList.contains('open')) {
+                    animateEvents(eventsContainer);
+                }
+            });
+
+            yearContainer.appendChild(yearHeader);
+            yearContainer.appendChild(timelineLine);
+            yearContainer.appendChild(eventsContainer);
+            timeline.appendChild(yearContainer);
         });
 
-    // Animazioni
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
+    // Animazione eventi
+    function animateEvents(container) {
+        const events = container.querySelectorAll('.event');
+        events.forEach((event, index) => {
+            setTimeout(() => {
+                event
+                    .classList
+                    .add('visible');
+            }, index * 100);
         });
-    });
-
-    document
-        .querySelectorAll('.event, .year-header')
-        .forEach(element => {
-            element.style.opacity = "0";
-            element.style.transform = "translateY(20px)";
-            element.style.transition = "all 0.4s ease-out";
-            observer.observe(element);
-        });
+    }
 });
