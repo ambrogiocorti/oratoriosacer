@@ -72,24 +72,174 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Prima Vita Comune. Esperienza nuova, molte indecisioni. Durante la Vita Comune, gli animatori presenti, sono chiamati dormire, mangiare, pregare e studiare in oratorio. Dura dal lunedì sera, finito catechismo, a sabato mattina con le pulizie degli ambienti utilizzati."
         },
         {
-            date: "Settembre 2022",
-            title: "PdF 2008 - Professione di Fede",
-            description: "Prima superiore. Decisi di mettermi in gioco, fare la PdF e quindi, diventai animatore."
+            date: "Novembre 2023",
+            title: "Ritiro Spirituale di Avvento",
+            description: "Weekend di spiritualità in preparazione al Natale."
         },
         {
-            date: "Settembre 2022",
-            title: "PdF 2008 - Professione di Fede",
-            description: "Prima superiore. Decisi di mettermi in gioco, fare la PdF e quindi, diventai animatore."
+            date: "Novembre/Dicembre 2023",
+            title: "Carro di Babbo Natale",
+            description: "Giri settimanali per le vie di Cernusco per animare il Natale."
         },
         {
-            date: "Settembre 2022",
-            title: "PdF 2008 - Professione di Fede",
-            description: "Prima superiore. Decisi di mettermi in gioco, fare la PdF e quindi, diventai animatore."
+            date: "Dicembre 2023",
+            title: "Novena di Natale",
+            description: "Nove serate di preghiera e preparazione al Natale."
         },
         {
-            date: "Settembre 2022",
-            title: "PdF 2008 - Professione di Fede",
-            description: "Prima superiore. Decisi di mettermi in gioco, fare la PdF e quindi, diventai animatore."
+            date: "Dicembre 2023",
+            title: "Lanternata",
+            description: "Processione con i bambini al Santuario di Santa Maria."
+        },
+        {
+            date: "Dicembre 2023",
+            title: "Messa di Mezzanotte",
+            description: "Celebrazione della Natività con concerto corale e auguri in oratorio."
+        },
+        {
+            date: "Dicembre 2023",
+            title: "Ado&Vado Firenze",
+            description: "Pellegrinaggio diocesano a Firenze per adolescenti."
+        },
+        {
+            date: "Gennaio 2024",
+            title: "Cena e Riunione Animatori",
+            description: "Incontro di inizio anno per pianificare le attività."
+        },
+        {
+            date: "Gennaio 2024",
+            title: "Festa della Famiglia",
+            description: "Spettacoli, pranzo comunitario e tombolata in oratorio."
+        },
+        {
+            date: "Febbraio 2024",
+            title: "Carnevale",
+            description: "Pomeriggio di giochi e animazione per bambini con parata in giro per la città."
+        },
+        {
+            date: "Febbraio 2024",
+            title: "Vita Comune 2-3sup",
+            description: "Ritiro spirituale per animatori di seconda e terza superiore."
+        },
+        {
+            date: "Marzo 2024",
+            title: "Ritiro Spirituale di Quaresima a Mornese",
+            description: "Momento forte di preghiera e condivisione."
+        },
+        {
+            date: "Marzo 2024",
+            title: "Fiera di San Giuseppe",
+            description: "Evento parrocchiale con stand e attività."
+        },
+        {
+            date: "Marzo 2024",
+            title: "Processione delle Palme",
+            description: "Celebrazione della Domenica delle Palme."
+        },
+        {
+            date: "Aprile 2024",
+            title: "Triduo Pasquale",
+            description: "Lavanda dei Piedi, Via Crucis e Veglia Pasquale (18-21 aprile)."
+        },
+        {
+            date: "Maggio 2024",
+            title: "Preparazione Oratorio Estivo",
+            description: "Incontri settimanali per organizzare l'estate (tutti i lunedì e venerdì)."
+        },
+        {
+            date: "Giugno 2024",
+            title: "Oratorio Estivo",
+            description: "Attività quotidiane per bambini e ragazzi (10 giugno - 12 luglio)."
+        },
+        {
+            date: "Luglio 2024",
+            title: "Campeggio Adolescenti",
+            description: "Esperienza estiva per animatori (19-26 luglio)."
+        },
+        {
+            date: "Settembre 2024",
+            title: "Festa dell’Oratorio (FdO)",
+            description: "Giochi, spettacoli e celebrazioni per la comunità (24-29 settembre)."
+        },
+        {
+            date: "Ottobre 2024",
+            title: "Ordinazione Diaconale di Davide",
+            description: "Celebrazione a Milano e pranzo festivo (5 ottobre)."
+        },
+        {
+            date: "Ottobre 2024",
+            title: "Festa Patronale San Giuseppe",
+            description: "Pranzo comunitario e animazione (13 ottobre)."
+        },
+        {
+            date: "Novembre 2024",
+            title: "Vita Comune 2-3sup",
+            description: "Secondo ritiro spirituale dell'anno (11-16 novembre)."
+        },
+        {
+            date: "Novembre 2024",
+            title: "Cena dei Santi",
+            description: "Serata comunitaria per festeggiare Ognissanti (1 novembre)."
+        },
+        {
+            date: "Dicembre 2024",
+            title: "Ritiro Spirituale di Avvento a Mornese",
+            description: "Weekend di preparazione al Natale (30 novembre - 1 dicembre)."
+        },
+        {
+            date: "Dicembre 2024",
+            title: "Novena e Messa di Natale",
+            description: "Celebrazioni natalizie con i bambini (18-24 dicembre)."
+        },
+        {
+            date: "Gennaio 2025",
+            title: "Cena e Incontro Animatori",
+            description: "Avvio delle attività dopo le feste (6 gennaio)."
+        },
+        {
+            date: "Gennaio 2025",
+            title: "Settimana dell’Educazione",
+            description: "Formazione animatori con cena comunitaria (24 gennaio)."
+        },
+        {
+            date: "Gennaio 2025",
+            title: "Messa con l’Arcivescovo",
+            description: "Celebrazione in Duomo per gli oratori (31 gennaio)."
+        },
+        {
+            date: "Febbraio 2025",
+            title: "Carnevale",
+            description: "Festa in maschera con giochi per bambini (8 febbraio)."
+        },
+        {
+            date: "Marzo 2025",
+            title: "Ritiro di Quaresima a Mornese",
+            description: "Momento di preghiera in preparazione alla Pasqua (29-30 marzo)."
+        },
+        {
+            date: "Aprile 2025",
+            title: "Giubileo Adolescenti",
+            description: "Pellegrinaggio diocesano (25-27 aprile)."
+        },
+        {
+            date: "Aprile 2025",
+            title: "Triduo Pasquale",
+            description: "Celebrazioni della Passione, Morte e Risurrezione (17-20 aprile)."
+        },
+        {
+            date: "Ogni domenica",
+            title: "Animazione Pomeridiana",
+            description: "Giochi e attività con i bambini in oratorio."
+        },
+        {
+            date: "Ogni lunedì",
+            title: "Catechismo Superiori",
+            description: "Incontri di formazione per animatori."
+        },
+        {
+            date: "Venerdì di Quaresima",
+            title: "Lodi Mattutine",
+            description: "Preghiera comunitaria alle 6:30 in Sacer."
         }
     ];
 
