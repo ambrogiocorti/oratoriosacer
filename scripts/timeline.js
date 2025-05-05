@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Primo colloquio",
             description: "A Novembre feci il mio primo colloquio con il Don. Il colloquio serviva per aiutarmi a gestire al meglio la scuola."
         },
+        
+        //Primo anno da animatore
         {
             date: "Settembre 2022",
             title: "PdF 2008 - Professione di Fede",
@@ -36,15 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Novena di Natale",
             description: "Novena 'nove giorni' prima di Natale. Come oratorio, noi animatori siamo chiamati a pensare ad alcune scenette (una ogni sera) che parlano del Vangelo del Giorno dal punto di vista di due o più bambini."
         },
-        {
-            date: "Marzo 2023",
-            title: "CamminAdo",
-            description: "La CamminAdo è stata una camminata a cui hanno partecipato molti oratori da tutta Milano e provincia. Siamo partiti da Cernusco, abbiamo preso la metro per Gessate. Arrivati a Gessate, abbiamo iniziato la camminata. A Inzago abbiamo fatto una tappa in un oratorio che ci ha dati la merenda, e poi, siamo ripartiti e siamo arrivati a Treviglio.<br>È stata una bellissima esperienza in cui ho avuto la fortuna di conoscere nuove fastastiche persone."
-        },
+        
+        //Secondo anno da animatore
         {
             date: "Marzo 2023",
             title: "Fiera di S. Giuseppe",
             description: "La Fiera di San Giuseppe è la festa di Cernusco S/N dedicata al suo patrono. Per l'occasione, ogni anno, nel weekend di San Giuseppe, l'Oratorio, apre il salone, allestito come Ristorante, e ospita tra la cena di sabato e il pranzo della domenica circa 500+ persone.<br>È sempre un'esperienza di festa, di gioia e di impegno da parte di ciascun animatore."
+        },
+        {
+            date: "Marzo 2023",
+            title: "CamminAdo",
+            description: "La CamminAdo è stata una camminata a cui hanno partecipato molti oratori da tutta Milano e provincia. Siamo partiti da Cernusco, abbiamo preso la metro per Gessate. Arrivati a Gessate, abbiamo iniziato la camminata. A Inzago abbiamo fatto una tappa in un oratorio che ci ha dati la merenda, e poi, siamo ripartiti e siamo arrivati a Treviglio.<br>È stata una bellissima esperienza in cui ho avuto la fortuna di conoscere nuove fastastiche persone."
         },
         {
             date: "Giugno 2023",
@@ -74,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             date: "Novembre 2023",
             title: "Ritiro Spirituale di Avvento",
-            description: "Weekend di spiritualità in preparazione al Natale."
+            description: "Weekend di spiritualità in preparazione al Natale. Durante questi due giorni"
         },
         {
             date: "Novembre/Dicembre 2023",
@@ -101,6 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Ado&Vado Firenze",
             description: "Pellegrinaggio diocesano a Firenze per adolescenti."
         },
+        
+        //Terzo anno da animatore
         {
             date: "Gennaio 2024",
             title: "Cena e Riunione Animatori",
@@ -139,107 +145,104 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             date: "Aprile 2024",
             title: "Triduo Pasquale",
-            description: "Lavanda dei Piedi, Via Crucis e Veglia Pasquale (18-21 aprile)."
+            description: "Lavanda dei Piedi, Via Crucis e Veglia Pasquale."
         },
         {
             date: "Maggio 2024",
             title: "Preparazione Oratorio Estivo",
-            description: "Incontri settimanali per organizzare l'estate (tutti i lunedì e venerdì)."
+            description: "Incontri settimanali per organizzare l'estate."
         },
         {
             date: "Giugno 2024",
             title: "Oratorio Estivo",
-            description: "Attività quotidiane per bambini e ragazzi (10 giugno - 12 luglio)."
+            description: "Attività quotidiane per bambini e ragazzi."
         },
         {
             date: "Luglio 2024",
             title: "Campeggio Adolescenti",
-            description: "Esperienza estiva per animatori (19-26 luglio)."
+            description: "Esperienza estiva per animatori."
         },
         {
             date: "Settembre 2024",
-            title: "Festa dell’Oratorio (FdO)",
-            description: "Giochi, spettacoli e celebrazioni per la comunità (24-29 settembre)."
+            title: "Festa dell'Oratorio (FdO)",
+            description: "Giochi, spettacoli e celebrazioni per la comunità."
         },
         {
             date: "Ottobre 2024",
-            title: "Ordinazione Diaconale di Davide",
-            description: "Celebrazione a Milano e pranzo festivo (5 ottobre)."
+            title: "Ordinazione Diaconale di Don Davide",
+            description: "Celebrazione a Milano e pranzo festivo."
         },
         {
             date: "Ottobre 2024",
             title: "Festa Patronale San Giuseppe",
-            description: "Pranzo comunitario e animazione (13 ottobre)."
+            description: "Pranzo comunitario e animazione."
         },
         {
             date: "Novembre 2024",
             title: "Vita Comune 2-3sup",
-            description: "Secondo ritiro spirituale dell'anno (11-16 novembre)."
+            description: "Secondo ritiro spirituale dell'anno."
         },
         {
             date: "Novembre 2024",
             title: "Cena dei Santi",
-            description: "Serata comunitaria per festeggiare Ognissanti (1 novembre)."
+            description: "Serata comunitaria per festeggiare Ognissanti."
         },
         {
             date: "Dicembre 2024",
             title: "Ritiro Spirituale di Avvento a Mornese",
-            description: "Weekend di preparazione al Natale (30 novembre - 1 dicembre)."
+            description: "Weekend di preparazione al Natale."
         },
         {
             date: "Dicembre 2024",
             title: "Novena e Messa di Natale",
-            description: "Celebrazioni natalizie con i bambini (18-24 dicembre)."
+            description: "Celebrazioni natalizie con i bambini."
         },
+        {
+            date: "Dicembre 2024",
+            title: "Ado&Vado",
+            description: "Pellegrinaggio diocesano a Lubiana e Trieste."
+        },
+        
+        //Quarto anno da animatore
         {
             date: "Gennaio 2025",
             title: "Cena e Incontro Animatori",
-            description: "Avvio delle attività dopo le feste (6 gennaio)."
+            description: "Avvio delle attività dopo le feste."
         },
         {
             date: "Gennaio 2025",
-            title: "Settimana dell’Educazione",
-            description: "Formazione animatori con cena comunitaria (24 gennaio)."
+            title: "Settimana dell'Educazione",
+            description: "Formazione animatori con cena comunitaria."
         },
         {
             date: "Gennaio 2025",
-            title: "Messa con l’Arcivescovo",
-            description: "Celebrazione in Duomo per gli oratori (31 gennaio)."
+            title: "Messa con l'Arcivescovo",
+            description: "Celebrazione in Duomo per gli oratori."
         },
         {
             date: "Febbraio 2025",
             title: "Carnevale",
-            description: "Festa in maschera con giochi per bambini (8 febbraio)."
+            description: "Festa in maschera con giochi per bambini."
         },
         {
             date: "Marzo 2025",
             title: "Ritiro di Quaresima a Mornese",
-            description: "Momento di preghiera in preparazione alla Pasqua (29-30 marzo)."
+            description: "Momento di preghiera in preparazione alla Pasqua."
+        },
+        {
+            date: "Marzo 2025",
+            title: "Fiera di San Giuseppe",
+            description: "Tradizionale festa patronale con ristorante oratoriano."
         },
         {
             date: "Aprile 2025",
             title: "Giubileo Adolescenti",
-            description: "Pellegrinaggio diocesano (25-27 aprile)."
+            description: "Pellegrinaggio diocesano."
         },
         {
             date: "Aprile 2025",
             title: "Triduo Pasquale",
-            description: "Celebrazioni della Passione, Morte e Risurrezione (17-20 aprile)."
-        },
-        {
-            date: "Ogni domenica",
-            title: "Animazione Pomeridiana",
-            description: "Giochi e attività con i bambini in oratorio."
-        },
-        {
-            date: "Ogni lunedì",
-            title: "Catechismo Superiori",
-            description: "Incontri di formazione per animatori."
-        },
-        {
-            date: "Venerdì di Quaresima",
-            title: "Lodi Mattutine",
-            description: "Preghiera comunitaria alle 6:30 in Sacer."
+            description: "Celebrazioni della Passione, Morte e Risurrezione."
         }
     ];
 
