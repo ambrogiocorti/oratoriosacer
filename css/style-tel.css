@@ -43,6 +43,17 @@ body {
 }
 
 /* ===== TIMELINE ===== */
+/* Responsive */
+@media (max-width: 768px) {
+    .accordion-header {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .accordion-header h2 {
+        font-size: 1.3rem;
+    }
+}
+
 @media (max-width: 768px) {
     .year-header {
         padding: 1.5rem;
