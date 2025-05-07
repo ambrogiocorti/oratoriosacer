@@ -22,24 +22,24 @@ let indicatorsContainer = document.getElementById("indicators");
 let carosello = 0;
 let immagini = [
     {
-        url: "../images/images.jpg",
+        url: "../images/carosello/ciaociao.jpeg",
         didascalia: "Descrizione prima immagine"
     },
     {
-        url: "../images/images2.jpg",
-        didascalia: "Descrizione seconda immagine"
+        url: "../images/carosello/ciaociao2.jpeg",
+        didascalia: "Descrizione prima immagine"
     },
     {
-        url: "../images/images3.jpg",
-        didascalia: "Descrizione terza immagine"
+        url: "../images/carosello/images.jpg",
+        didascalia: "Descrizione prima immagine"
     },
     {
-        url: "../images/images4.jpg",
-        didascalia: "Descrizione quarta immagine"
+        url: "../images/carosello/images.jpg",
+        didascalia: "Descrizione prima immagine"
     },
     {
-        url: "../images/images4 copy.jpg",
-        didascalia: "Descrizione quinta immagine"
+        url: "../images/carosello/images.jpg",
+        didascalia: "Descrizione prima immagine"
     }
 ];
 
