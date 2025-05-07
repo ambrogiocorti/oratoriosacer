@@ -232,6 +232,7 @@ body {
 /* Eventi */
 .event {
     position: relative;
+    margin-left: 40px;
     margin-bottom: 3rem;
     opacity: 0;
     transform: translateY(20px);
@@ -262,7 +263,6 @@ body {
 
 .event-date {
     position: absolute;
-    margin-left: 40px;
     left: -70px;
     top: 20px;
     width: 120px;
