@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Schermo Palestra - Tornei Scolastici</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css?v=50" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
+  </head>
+  <body class="gym-page">
+    <main class="gym-screen">
+      <header class="gym-header">
+        <div>
+          <span class="gym-kicker">Tornei Scolastici</span>
+          <h1 id="gym-title">Schermo palestra</h1>
+        </div>
+        <div class="gym-header-actions">
+          <a class="gym-back-link" href="./" aria-label="Torna alla home">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Home</span>
+          </a>
+          <select id="gym-sport-select" aria-label="Torneo"></select>
+        </div>
+      </header>
+
+      <section class="gym-live-panel" id="gym-live-panel">
+        <div class="empty-state">Caricamento...</div>
+      </section>
+
+      <section class="gym-grid">
+        <article class="gym-card">
+          <h2>Prossimi incontri</h2>
+          <div id="gym-next-list" class="gym-list"></div>
+        </article>
+        <article class="gym-card">
+          <h2>Classifica</h2>
+          <div id="gym-standings-list" class="gym-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="js/gym-screen.js?v=50"></script>
+  </body>
+</html>

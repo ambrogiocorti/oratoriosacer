@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Tornei Scolastici</title>
+    <script>
+      (() => {
+        const cleanPath = window.location.pathname.replace(/\/index\.html$/, '/');
+        if (cleanPath !== window.location.pathname) {
+          window.history.replaceState(null, '', `${cleanPath}${window.location.search}${window.location.hash}`);
+        }
+      })();
+    </script>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+    <link rel="stylesheet" href="css/style.css?v=50"/>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  </head>
+  <body class="public-page">
+    <div class="page-shell">
+      <header class="public-header">
+        <div class="public-quick-actions">
+          <a class="header-action-btn" href="gym.html" title="Schermo palestra" aria-label="Apri schermo palestra">
+            <i class="fa-solid fa-tv"></i>
+          </a>
+          <button class="header-action-btn" id="public-issue-btn" type="button" title="Segnala un problema" aria-label="Segnala un problema">
+            <i class="fa-solid fa-circle-exclamation"></i>
+          </button>
+        </div>
+
+        <div class="public-header-actions">
+          <div class="public-notification-wrap">
+            <button id="public-notifications-btn" class="header-action-btn" type="button" title="Notifiche" aria-label="Apri notifiche" aria-expanded="false" aria-controls="public-notifications-popover">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot" aria-hidden="true"></span>
+            </button>
+          </div>
+          <button id="public-archive-btn" class="header-action-btn" type="button" title="Archivio / Albo d'Oro" aria-label="Apri Archivio / Albo d'Oro">
+            <i class="fa-solid fa-landmark"></i>
+          </button>
+          <button id="admin-access-btn" class="header-action-btn" title="Accesso amministratore" aria-label="Apri login admin">
+            <i class="fa-solid fa-lock"></i>
+          </button>
+        </div>
+
+        <div class="public-title-wrap">
+          <h1 class="public-title"><i class="fa-solid fa-trophy"></i> Tornei Scolastici</h1>
+          <p class="public-subtitle" id="public-subtitle">Risultati e classifica in tempo reale</p>
+        </div>
+      </header>
+
+      <div id="public-notifications-popover" class="public-notification-popover" hidden>
+        <div class="public-notification-arrow" aria-hidden="true"></div>
+        <div class="public-notification-title">Notifiche</div>
+        <div id="public-notifications-list" class="public-notification-list">
+          <div class="empty-state compact">Caricamento notifiche...</div>
+        </div>
+      </div>
+
+      <main class="container">
+        <section class="sport-selector">
+          <label for="sport-select">Scegli il Torneo</label>
+          <select id="sport-select">
+            <option value="">-- Seleziona torneo --</option>
+          </select>
+        </section>
+
+        <section class="card hidden" id="venue-live-card">
+          <div class="card-header"><i class="fa-solid fa-location-dot"></i> Campo in corso</div>
+          <div class="card-body" id="venue-live-content"></div>
+        </section>
+
+        <section class="card hidden" id="sport-context-card">
+          <div class="card-body" id="sport-context-content"></div>
+        </section>
+
+        <section class="card" id="upcoming-card">
+          <div class="card-header"><i class="fa-solid fa-bell"></i> Prossimamente</div>
+          <div class="card-body" id="upcoming-content">
+            <div class="empty-state">Seleziona un torneo.</div>
+          </div>
+        </section>
+
+        <section class="card hidden" id="team-profile-card">
+          <div class="card-header"><i class="fa-solid fa-users"></i> Pagina squadra</div>
+          <div class="card-body" id="team-profile-content"></div>
+        </section>
+
+        <section class="card" id="standings-card">
+          <div class="card-header" id="standing-title"><i class="fa-solid fa-list-ol"></i> Classifica</div>
+          <div class="card-body" id="standings-container">
+            <div class="empty-state">Seleziona un torneo.</div>
+          </div>
+        </section>
+
+        <section class="card" id="matches-card">
+          <div class="card-header" id="matches-title"><i class="fa-solid fa-calendar-check"></i> Partite Giocate</div>
+          <div id="matches-container">
+            <div class="empty-state">In attesa di selezione torneo.</div>
+          </div>
+        </section>
+
+        <section class="card hidden" id="athletics-card">
+          <div class="card-header"><i class="fa-solid fa-medal"></i> Atletica</div>
+          <div class="card-body">
+            <div id="athletics-events-container"></div>
+          </div>
+          <div class="card-body" style="padding-top: 0">
+            <div id="athletics-ranking-container"></div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <div id="match-details-modal" class="modal-overlay">
+      <div class="modal-box match-details-modal-box">
+        <div class="modal-header">
+          <h2 style="margin: 0"><i class="fa-solid fa-circle-info"></i> Dettaglio Match</h2>
+          <button class="close-btn" id="match-details-close-btn" aria-label="Chiudi">&times;</button>
+        </div>
+        <div id="match-details-content"></div>
+      </div>
+    </div>
+
+    <div id="modal-login" class="modal-overlay">
+      <div class="modal-box" style="max-width: 380px">
+        <div class="modal-header">
+          <h2 style="margin: 0">Area Amministratore</h2>
+          <button class="close-btn" id="login-cancel-btn" aria-label="Chiudi">&times;</button>
+        </div>
+
+        <div class="inline-grid" style="gap: 12px">
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="nome@scuola.it" autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="login-pass">Password</label>
+            <input type="password" id="login-pass" placeholder="Password" autocomplete="current-password" />
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 18px">
+          <button class="btn btn-primary" id="login-submit-btn" style="flex: 1">Accedi</button>
+          <button class="btn btn-ghost" id="login-cancel-btn-2" style="flex: 1">Annulla</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-honor-roll" class="modal-overlay">
+      <div class="modal-box honor-modal-box">
+        <div class="modal-header">
+          <h2 style="margin: 0"><i class="fa-solid fa-landmark"></i> Archivio / Albo d'Oro</h2>
+          <button class="close-btn" id="honor-roll-close-btn" aria-label="Chiudi">&times;</button>
+        </div>
+        <div class="inline-grid" style="gap: 14px">
+          <div class="field">
+            <label for="honor-roll-sport-select">Torneo</label>
+            <select id="honor-roll-sport-select">
+              <option value="">-- Seleziona torneo --</option>
+            </select>
+          </div>
+          <div id="honor-roll-modal-content">
+            <div class="empty-state">Seleziona un torneo per consultare l'Albo d'Oro.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main-index.js?v=50"></script>
+  </body>
+</html>

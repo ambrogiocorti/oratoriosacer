@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Quadro Eliminazione - ITSOS Cup</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: #f4f7fb;
+    }
+
+    .bracket-demo-shell {
+      width: min(1420px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 24px 0 36px;
+    }
+
+    .bracket-demo-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .bracket-demo-header h1 {
+      margin: 0 0 6px;
+      color: #0f172a;
+      font-size: clamp(1.25rem, 2vw, 1.85rem);
+      line-height: 1.1;
+    }
+
+    .bracket-demo-header p {
+      margin: 0;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .bracket-demo-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .bracket-demo-panel {
+      padding: 16px;
+      border: 1px solid #dbe3ef;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+    }
+
+    .bracket-demo-subheader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+      padding: 2px 2px 14px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .bracket-demo-subheader h2 {
+      margin: 0;
+      color: #0f172a;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 760px) {
+      .bracket-demo-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .bracket-demo-actions {
+        justify-content: flex-start;
+      }
+
+      .bracket-demo-subheader {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="bracket-demo-shell">
+    <header class="bracket-demo-header">
+      <div>
+        <h1>Demo Quadro Eliminazione</h1>
+        <p>Calcio M - dati realistici di prova</p>
+      </div>
+      <div class="bracket-demo-actions">
+        <a class="btn btn-outline" href="./index.html">
+          <i class="fa-solid fa-arrow-left"></i>
+          Home
+        </a>
+      </div>
+    </header>
+
+    <section class="bracket-demo-panel">
+      <div class="bracket-demo-subheader">
+        <h2><i class="fa-solid fa-sitemap"></i> Quadro Eliminazione</h2>
+        <label class="knockout-phase-control" for="demo-phase-select">
+          <span>Vista</span>
+          <select id="demo-phase-select">
+            <option value="finals">Fasi finali</option>
+            <option value="groups">Gironi</option>
+          </select>
+        </label>
+      </div>
+      <div class="kb-stats-bar" id="demo-stats"></div>
+      <div class="kb-bracket-scroll-wrap" id="demo-bracket"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/bracket-demo.js"></script>
+</body>
+</html>

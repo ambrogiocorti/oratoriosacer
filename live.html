@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Live Match | Tornei Scolastici</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css?v=50"/>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  </head>
+  <body class="live-page">
+    <div class="live-shell">
+      <section class="card">
+        <div class="card-body">
+          <div class="top-row" style="margin-bottom: 8px">
+            <div>
+              <h1 class="page-title" id="live-match-title">Match Live</h1>
+              <div class="muted" id="live-match-meta">-</div>
+            </div>
+            <div class="live-top-actions">
+              <button class="btn btn-ghost btn-compact icon-only-action" id="btn-back-admin" type="button" title="Torna admin" aria-label="Torna admin"><i class="fa-solid fa-arrow-left"></i></button>
+              <button class="btn btn-ghost btn-compact icon-only-action" id="btn-print-emergency-report" type="button" title="Referto emergenza" aria-label="Referto emergenza"><i class="fa-solid fa-print"></i></button>
+              <button class="btn btn-primary btn-compact icon-only-action" id="btn-save-snapshot" type="button" title="Salva snapshot" aria-label="Salva snapshot" data-requires-edit><i class="fa-solid fa-floppy-disk"></i></button>
+              <button class="btn btn-danger btn-compact icon-only-action" id="btn-finalize-match" type="button" title="Chiudi match" aria-label="Chiudi match" data-requires-edit><i class="fa-solid fa-flag-checkered"></i></button>
+            </div>
+          </div>
+          <div class="live-status-strip">
+            <div id="live-lock-status" class="lock-banner locked">In attesa lock...</div>
+            <div id="live-sync-status" class="sync-status pending"><i class="fa-solid fa-cloud"></i> Sincronizzazione in attesa</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="live-scoreboard">
+        <div class="team-block">
+          <h2 class="team-name" id="live-home-name">Casa</h2>
+          <div class="live-score" id="live-home-score">0</div>
+          <div class="score-actions">
+            <button class="btn btn-ghost" data-requires-edit data-score-team="home" data-score-delta="1">+1</button>
+            <button class="btn btn-ghost" data-requires-edit data-score-team="home" data-score-delta="2">+2</button>
+            <button class="btn btn-ghost" data-requires-edit data-score-team="home" data-score-delta="3">+3</button>
+            <button class="btn btn-ghost" data-requires-edit data-score-team="home" data-score-delta="-1">-1</button>
+          </div>
+        </div>
+
+        <div class="timer-card">
+          <p class="timer-value" id="live-timer">00:00</p>
+          <div class="badge badge-info" id="live-quarter" style="justify-content: center">Q1</div>
+          <div class="timer-actions">
+            <button class="btn btn-primary" id="btn-timer-start" data-requires-edit>Start</button>
+            <button class="btn btn-ghost" id="btn-timer-stop" data-requires-edit>Stop</button>
+            <button class="btn btn-ghost" id="btn-timer-reset" data-requires-edit>Reset</button>
+          </div>
+          <div class="timer-actions" id="quarter-controls">
+            <button class="btn btn-ghost" id="btn-quarter-prev" data-requires-edit><i class="fa-solid fa-chevron-left"></i> Quarto</button>
+            <button class="btn btn-ghost" id="btn-quarter-next" data-requires-edit>Quarto <i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="timer-actions" id="timeouts-controls">
+            <button class="btn btn-ghost" id="btn-timeout-home" data-requires-edit data-action="timeout-home">TO Casa <span id="timeout-home-count">0</span></button>
+            <button class="btn btn-ghost" id="btn-timeout-away" data-requires-edit data-action="timeout-away">TO Ospite <span id="timeout-away-count">0</span></button>
+          </div>
+          <div class="muted" id="timeout-limit-label">Limite timeout per squadra: 0</div>
+        </div>
+
+        <div class="team-block">
+          <h2 class="team-name" id="live-away-name">Ospite</h2>
+          <div class="live-score" id="live-away-score">0</div>
+          <div class="score-actions">
+            <button class="btn btn-ghost" data-requires-edit data-score-team="away" data-score-delta="1">+1</button>
+            <button class="btn btn-ghost" data-requires-edit data-score-team="away" data-score-delta="2">+2</button>
+            <button class="btn btn-ghost" data-requires-edit data-score-team="away" data-score-delta="3">+3</button>
+            <button class="btn btn-ghost" data-requires-edit data-score-team="away" data-score-delta="-1">-1</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card hidden" id="live-events-card">
+        <div class="card-header"><i class="fa-solid fa-timeline"></i> Cronologia partita</div>
+        <div class="card-body">
+          <div class="inline-grid cols-3 live-event-form">
+            <div class="field"><label for="live-event-team">Squadra</label><select id="live-event-team"></select></div>
+            <div class="field"><label for="live-event-player">Giocatore</label><select id="live-event-player"></select></div>
+            <div class="field"><label for="live-event-type">Evento</label><select id="live-event-type"><option value="score">Punto/Rete</option><option value="substitution">Sostituzione</option><option value="foul">Fallo</option><option value="yellow_card">Giallo</option><option value="red_card">Rosso</option><option value="timeout">Timeout</option><option value="note">Nota</option></select></div>
+            <div class="field"><label for="live-event-minute">Minuto</label><input id="live-event-minute" type="number" min="0" /></div>
+            <div class="field" style="grid-column: span 2"><label for="live-event-notes">Note</label><input id="live-event-notes" type="text" placeholder="Es. assist, cambio, motivazione" /></div>
+            <div><button class="btn btn-primary" id="btn-add-live-event" type="button" data-requires-edit><i class="fa-solid fa-plus"></i> Aggiungi evento</button></div>
+          </div>
+          <div class="table-wrap" style="margin-top: 14px">
+            <table id="table-live-events">
+              <thead><tr><th>Min</th><th>Squadra</th><th>Giocatore</th><th>Evento</th><th>Parziale</th><th>Note</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="roster-grid">
+        <article class="card">
+          <div class="card-header"><i class="fa-solid fa-shirt"></i> Roster Casa</div>
+          <div class="card-body table-wrap">
+            <table id="table-live-home">
+              <thead>
+                <tr>
+                  <th class="text-center">Pres.</th>
+                  <th>Giocatore</th>
+                  <th class="text-center" data-col="fouls">Falli</th>
+                  <th class="text-center">MVP</th>
+                  <th class="text-center" data-col="cards">Cart.</th>
+                  <th class="text-center">Azione</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header"><i class="fa-solid fa-shirt"></i> Roster Ospite</div>
+          <div class="card-body table-wrap">
+            <table id="table-live-away">
+              <thead>
+                <tr>
+                  <th class="text-center">Pres.</th>
+                  <th>Giocatore</th>
+                  <th class="text-center" data-col="fouls">Falli</th>
+                  <th class="text-center">MVP</th>
+                  <th class="text-center" data-col="cards">Cart.</th>
+                  <th class="text-center">Azione</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <div class="modal-overlay" id="modal-offline-conflict">
+      <div class="modal-box offline-conflict-modal">
+        <div class="modal-header">
+          <h2 style="margin: 0"><i class="fa-solid fa-triangle-exclamation"></i> Conflitto offline</h2>
+          <button class="close-btn" id="btn-close-offline-conflict" aria-label="Chiudi">&times;</button>
+        </div>
+        <div id="offline-conflict-content"></div>
+        <div class="signature-actions">
+          <button class="btn btn-ghost" type="button" id="btn-conflict-keep-online"><i class="fa-solid fa-cloud"></i> Mantieni online</button>
+          <button class="btn btn-primary" type="button" id="btn-conflict-keep-local"><i class="fa-solid fa-mobile-screen"></i> Usa bozza locale</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-finalize-signatures">
+      <div class="modal-box signature-modal">
+        <div class="modal-header">
+          <h2 style="margin: 0"><i class="fa-solid fa-file-signature"></i> Conferma Referto</h2>
+          <button class="close-btn" id="btn-cancel-finalize-signatures" aria-label="Chiudi">&times;</button>
+        </div>
+
+        <div class="signature-report-summary" id="signature-report-summary"></div>
+
+        <section class="signature-staff-section">
+          <h3>Staff referto</h3>
+          <div class="inline-grid cols-2">
+            <div class="field"><label for="final-referee-name">Arbitro</label><input id="final-referee-name" type="text" placeholder="Nome arbitro" /></div>
+            <div class="field"><label for="final-scorekeeper-name">Segnapunti</label><input id="final-scorekeeper-name" type="text" placeholder="Nome segnapunti" /></div>
+            <div class="field"><label for="final-field-manager-name">Responsabile campo</label><input id="final-field-manager-name" type="text" placeholder="Nome responsabile" /></div>
+            <div class="field"><label for="final-supervisor-name">Docente supervisore</label><input id="final-supervisor-name" type="text" placeholder="Nome docente" /></div>
+          </div>
+        </section>
+
+        <div class="signature-grid">
+          <section class="signature-panel">
+            <div class="signature-panel-head">
+              <div>
+                <div class="field-label">Capitano Casa</div>
+                <strong id="signature-home-captain">-</strong>
+              </div>
+              <span class="signature-status" id="signature-home-status">Firma richiesta</span>
+            </div>
+            <canvas class="signature-canvas" data-signature-side="home" width="520" height="170" aria-label="Firma capitano casa"></canvas>
+            <button class="btn btn-ghost btn-compact" type="button" data-clear-signature="home">
+              <i class="fa-solid fa-eraser"></i> Cancella
+            </button>
+          </section>
+
+          <section class="signature-panel">
+            <div class="signature-panel-head">
+              <div>
+                <div class="field-label">Capitano Ospite</div>
+                <strong id="signature-away-captain">-</strong>
+              </div>
+              <span class="signature-status" id="signature-away-status">Firma richiesta</span>
+            </div>
+            <canvas class="signature-canvas" data-signature-side="away" width="520" height="170" aria-label="Firma capitano ospite"></canvas>
+            <button class="btn btn-ghost btn-compact" type="button" data-clear-signature="away">
+              <i class="fa-solid fa-eraser"></i> Cancella
+            </button>
+          </section>
+        </div>
+
+        <div class="signature-actions">
+          <button class="btn btn-ghost" type="button" id="btn-cancel-finalize-signatures-secondary">Annulla</button>
+          <button class="btn btn-danger" type="button" id="btn-confirm-finalize-signatures">
+            <i class="fa-solid fa-flag-checkered"></i> Chiudi Match
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main-live.js?v=50"></script>
+  </body>
+</html>
